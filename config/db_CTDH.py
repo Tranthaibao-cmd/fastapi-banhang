@@ -3,11 +3,11 @@ import motor.motor_asyncio
 import motor
 from bson.objectid import ObjectId
 import json
-mongo_uri="mongodb://127.0.0.1:27017"
+mongo_uri="mongodb://baotran:Baobao99@baotran-shard-00-00.dx30e.mongodb.net:27017,baotran-shard-00-01.dx30e.mongodb.net:27017,baotran-shard-00-02.dx30e.mongodb.net:27017/mongo?ssl=true&replicaSet=atlas-b854c8-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 client=motor.motor_asyncio.AsyncIOMotorClient(mongo_uri)
 
-db=client.config
+db=client.mongo
 
 
 CTDH_collection = db.get_collection('CHITIETDONHANG')
