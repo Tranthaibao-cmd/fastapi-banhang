@@ -4,11 +4,12 @@ from config.db_CTDH import receive_CTDH,add_CTDH,update_CTDH,delete_CTDH,get_CTD
 from fastapi.encoders import jsonable_encoder
 from models.user import CTDH, ResponseModel,ErrorResponseModel
 
+
 router = APIRouter()
 #get all data
 @router.get('/',summary="get all chi tiet don hang")
 async def get_all_CTDH():
-    get_CTDH= await receive_CTDH()
+    get_CTDH=await receive_CTDH()
     if get_CTDH: 
         return ResponseModel(get_CTDH,"successfull")
     else:
