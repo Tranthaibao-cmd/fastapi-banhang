@@ -35,7 +35,7 @@ async def get_NSXs(id:str):
 async def update(id:str,data:NSX=Body(...)):
     NSX_update= await update_NSX(id,data.dict())
     if NSX_update:
-        return ResponseModel("nsx by id","successfull")
+        return ResponseModel("update nsx by id","successfull")
     else:
         return ErrorResponseModel("error",404,"cant update")
 
