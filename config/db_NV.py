@@ -22,7 +22,7 @@ async def receive_NV():
 
 #add NV
 async def add_NV(add:dict)->dict:
-    NV= await NV_collection.insert_one(add.dict())
+    NV= await NV_collection.insert_one(add)
     new_NV= await NV_collection.find_one({"_id":NV.inserted_id})
     new_NV['_id']=str(new_NV['_id'])
     return  new_NV

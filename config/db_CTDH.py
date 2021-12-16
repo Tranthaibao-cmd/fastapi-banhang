@@ -22,7 +22,7 @@ async def receive_CTDH():
 
 #add CTDH
 async def add_CTDH(add:dict)->dict:
-    CTDH= await CTDH_collection.insert_one(add.dict())
+    CTDH= await CTDH_collection.insert_one(add)
     new_CTDH= await CTDH_collection.find_one({"_id":CTDH.inserted_id})
     new_CTDH['_id']=str(new_CTDH['_id'])
     return  new_CTDH

@@ -30,7 +30,7 @@ async def receive_don_hangs():
     return don_hang
 #add donhang
 async def add_donhangs(add:dict)->dict:
-    donhang= await don_hang_collection.insert_one(add.dict())
+    donhang= await don_hang_collection.insert_one(add)
     new_donhang= await don_hang_collection.find_one({"_id":donhang.inserted_id})
     new_donhang['_id']=str(new_donhang['_id'])
     return  new_donhang

@@ -22,7 +22,7 @@ async def receive_KH():
 
 #add KH
 async def add_KH(add:dict)->dict:
-    KH= await KH_collection.insert_one(add.dict())
+    KH= await KH_collection.insert_one(add)
     new_KH= await KH_collection.find_one({"_id":KH.inserted_id})
     new_KH['_id']=str(new_KH['_id'])
     return  new_KH

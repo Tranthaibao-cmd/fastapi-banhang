@@ -22,7 +22,7 @@ async def receive_NSX():
 
 #add NSX
 async def add_NSX(add:dict)->dict:
-    NSX= await NSX_collection.insert_one(add.dict())
+    NSX= await NSX_collection.insert_one(add)
     new_NSX= await NSX_collection.find_one({"_id":NSX.inserted_id})
     new_NSX['_id']=str(new_NSX['_id'])
     return  new_NSX

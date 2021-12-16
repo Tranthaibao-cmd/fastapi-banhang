@@ -22,7 +22,7 @@ async def receive_MH():
 
 #add MH
 async def add_MH(add:dict)->dict:
-    MH= await MH_collection.insert_one(add.dict())
+    MH= await MH_collection.insert_one(add)
     new_MH= await MH_collection.find_one({"_id":MH.inserted_id})
     new_MH['_id']=str(new_MH['_id'])
     return  new_MH
