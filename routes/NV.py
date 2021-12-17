@@ -35,7 +35,7 @@ async def get_NVs(id:str):
 async def update(id:str,data:NV=Body(...)):
     NV_update= await update_NV(id,data.dict())
     if NV_update:
-        return ResponseModel("NV by id","successfull")
+        return ResponseModel("update NV by id","successfull")
     else:
         return ErrorResponseModel("error",404,"cant update")
 

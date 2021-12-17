@@ -2,12 +2,12 @@ from pydantic import BaseModel,Field, fields
 class NSX(BaseModel):
     ten:str=''
     diachi:str=''
-    SĐT:float
+    SĐT:float=''
 
 class KH(BaseModel):
     diachi:str=''
     gioitinh:str=''
-    SĐT:float
+    SĐT:float=''
     ten:str=''
 
 class MH(BaseModel):
@@ -20,17 +20,17 @@ class MH(BaseModel):
 class NV(BaseModel):
     diachi:str=''
     gioitinh:str=''
-    SĐT:float
+    SĐT:float=''
     ten:str=''
 class CTDH(BaseModel):
-    giatien:float
+    giatien:float=''
     idMHang:str=''
-    soluong:float
+    soluong:float=''
 class DH(BaseModel):
     idCTDH:str=''
     idNV:str=''
     idKH:str=''
-    giatien:float
+    giatien:float=''
     
     
 def ResponseModel(data,message):
