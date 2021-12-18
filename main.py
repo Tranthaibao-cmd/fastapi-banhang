@@ -9,14 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = [
-    "https://backend-mongoo.herokuapp.com",
-    "http://localhost:5000",
-    "http://localhost:4200",
-    "http://localhost:8000",
-    "*"
-]
-
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
