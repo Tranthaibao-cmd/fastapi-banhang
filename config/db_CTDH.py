@@ -11,11 +11,14 @@ db=client.mongo
 
 
 CTDH_collection = db.get_collection('CHITIETDONHANG')
+MH_collection = db.get_collection('MATHANG')
 
 async def receive_CTDH():
     CTDH = []
     a = CTDH_collection.find()
     async for dh in a:
+        MH= await MH_collection.find_one({"_id":ObjectId(dh["idMHang"])})
+        dh["tenmh"]=MH['ten']
         dh['_id'] = str(dh['_id'])
         CTDH.append(dh)
     return CTDH

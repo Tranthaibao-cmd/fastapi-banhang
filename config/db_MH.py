@@ -17,8 +17,8 @@ async def receive_MH():
     MH = []
     a = MH_collection.find()
     async for dh in a:
-        nsx= await NSX_collection.find_one({"_id":ObjectId( dh["idNSX"])})
-        dh["tennsx"]=nsx['ten']
+        # nsx= await NSX_collection.find_one({"_id":ObjectId( dh["idNSX"])})
+        # dh["tennsx"]=nsx['ten']
         dh['_id'] = str(dh['_id'])
         MH.append(dh)
     return MH

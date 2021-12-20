@@ -8,9 +8,10 @@ client=motor.motor_asyncio.AsyncIOMotorClient(mongo_uri)
 
 db=client.mongo
 
-
 don_hang_collection = db.get_collection('DONHANG')
-
+KH_collection = db.get_collection('KHACHHANG')
+CTDH_collection = db.get_collection('CHITIETDONHANG')
+NV_collection = db.get_collection('NHANVIEN')
 # def donhang_sup(don_hang)->dict:
 #     return{
 #         "id":str(don_hang["_id"]),
@@ -20,13 +21,25 @@ don_hang_collection = db.get_collection('DONHANG')
 #         "giatien":don_hang["giatien"]
 #     }
 #get all data collection
-async def receive_don_hangs():
+async def receive_don_hangs()->dict:
     don_hang = []
+    x=0
     a = don_hang_collection.find()
     async for dh in a:
+        kh= await KH_collection.find_one({"_id":ObjectId(dh["idKH"])})
+        if kh:
+            dh["tenkh"]= kh["ten"] 
+        NV= await NV_collection.find_one({"_id":ObjectId(dh["idNV"])})
+        if NV:    
+            dh["tennv"]=NV['ten']
+        # CTDH= await CTDH_collection.find_one({"_id":ObjectId( dh["idCTDONHANG"][0])})
+        # if CTDH:
+        #     dh["tenmh1"]=CTDH['tenmh']
+        # CTDH2= await CTDH_collection.find_one({"_id":ObjectId( dh["idCTDONHANG"][1])})
+        # if CTDH2:   
+        #     dh["tenmh2"]=CTDH2['tenmh']
         dh['_id'] = str(dh['_id'])
         don_hang.append(dh)
-    
     return don_hang
 #add donhang
 async def add_donhangs(add:dict)->dict:
